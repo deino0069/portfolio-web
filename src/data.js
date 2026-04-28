@@ -113,13 +113,6 @@ export const listTools = [
     dad: "1200",
   },
   {
-    id: 13,
-    gambar: Tools13,
-    nama: "Firebase",
-    ket: "Framework",
-    dad: "1300",
-  },
-  {
     id: 14,
     gambar: Tools14,
     nama: "HTML",
