@@ -82,7 +82,7 @@ function App() {
               <ShinyText text="Hi I'm Dheeraj Kumar" disabled={false} speed={3} className='custom-class' />
             </h1>
             <BlurText
-              text="A passionate application and web developer dedicated to crafting modern, high-performance digital experiences through innovative and user-friendly solutions."
+              text="A passionate Software Developer dedicated to crafting modern, high-performance digital experiences through innovative and user-friendly solutions."
               delay={150}
               animateBy="words"
               direction="top"
@@ -106,7 +106,7 @@ function App() {
           <div className="md:ml-auto animate__animated animate__fadeInUp animate__delay-4s">
             <ProfileCard
               name="Dheeraj Kumar"
-              title="Full-Stack Developer"
+              title="Software Developer"
               handle="dheeraj_kambojj"
               status="Online"
               contactText="Contact Me"
@@ -129,7 +129,7 @@ function App() {
                 </h2>
 
                 <BlurText
-                  text="I’m Dheeraj, a passionate full-stack developer focused on building modern, high-performance web and mobile applications with intuitive user experiences. I specialize in Python, working with frameworks like FastAPI and Django, along with Flutter for frontend development. I focus on creating scalable, efficient, and user-friendly solutions while following clean coding practices. I’m continuously expanding my skills in Artificial Intelligence, Machine Learning, and real-time technologies to build smarter, impactful digital products that help users and businesses grow."
+                  text="I’m Dheeraj, a Software developer focused on building modern, high-performance web and mobile applications with intuitive user experiences. I specialize in Python, working with frameworks like FastAPI and Django, along with Flutter for frontend development. I focus on creating scalable, efficient, and user-friendly solutions while following clean coding practices. I’m continuously expanding my skills in Artificial Intelligence, Machine Learning, and real-time technologies to build smarter, impactful digital products that help users and businesses grow."
                   delay={150}
                   animateBy="words"
                   direction="top"
