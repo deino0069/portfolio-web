@@ -19,8 +19,9 @@ AOS.init();
 function App() {
   const aboutRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-
+  
   const [selectedProject, setSelectedProject] = useState(null); // null = modal tertutup
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -37,7 +38,7 @@ function App() {
 
     if (isReload) {
       // Ambil path tanpa hash
-      const baseUrl = window.location.origin + "/portofolio/";
+      const baseUrl = window.location.origin + "/portfolio/";
       window.location.replace(baseUrl);
     }
   }, []);
@@ -229,7 +230,6 @@ function App() {
         </div>
         {/* Proyek */}
 
-
         {/* Kontak */}
         <div className="kontak mt-32 sm:p-10 p-0" id="contact">
           <h1
@@ -250,17 +250,28 @@ function App() {
             Get in touch with me or chat in real-time
           </p>
 
+          {/* Success Message */}
+          {showSuccessMessage && (
+            <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 animate-bounce">
+              <div className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Message sent successfully!</span>
+              </div>
+            </div>
+          )}
+
           {/* Container dua kolom */}
           <div className="flex flex-col md:flex-row gap-8">
             {/* Chat Room di kiri */}
             <div className="flex-1 bg-zinc-800 p-6 rounded-md" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true">
               <ChatRoom />
             </div>
-
-            {/* Contact Form di kanan */}
+            
             <div className="flex-1">
               <form
-                action="https://formsubmit.co/rissoppa21@gmail.com"
+                action="https://formsubmit.co/dheerajdhanju3@gmail.com"
                 method="POST"
                 className="bg-zinc-800 p-10 w-full rounded-md"
                 autoComplete="off"
@@ -268,48 +279,120 @@ function App() {
                 data-aos-duration="1000"
                 data-aos-delay="500"
                 data-aos-once="true"
+                onSubmit={(e) => {
+                  setTimeout(() => {
+                    setShowSuccessMessage(true);
+                    setTimeout(() => setShowSuccessMessage(false), 5000);
+                  }, 100);
+                }}
               >
+
+                {/* Hidden Config */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_subject" value="New Portfolio Contact!" />
+                <input type="hidden" name="_next" value="http://localhost:5173/" />
+
                 <div className="flex flex-col gap-6">
+
+                  {/* Full Name */}
                   <div className="flex flex-col gap-2">
                     <label className="font-semibold">Full Name</label>
+
                     <input
                       type="text"
                       name="Name"
-                      placeholder="Input Name..."
-                      className="border border-zinc-500 p-2 rounded-md"
+                      placeholder="Enter your full name..."
+                      className="border border-zinc-500 bg-zinc-900 p-3 rounded-md outline-none focus:border-violet-500"
                       required
                     />
                   </div>
+
+                  {/* Email */}
                   <div className="flex flex-col gap-2">
                     <label className="font-semibold">Email</label>
+
                     <input
                       type="email"
                       name="Email"
-                      placeholder="Input Email..."
-                      className="border border-zinc-500 p-2 rounded-md"
+                      placeholder="Enter your email..."
+                      className="border border-zinc-500 bg-zinc-900 p-3 rounded-md outline-none focus:border-violet-500"
                       required
                     />
                   </div>
+
+                  {/* Phone Number */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="message" className="font-semibold">Message</label>
+                    <label className="font-semibold">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="Phone"
+                      placeholder="Enter your phone number..."
+                      className="border border-zinc-500 bg-zinc-900 p-3 rounded-md outline-none focus:border-violet-500"
+                    />
+                  </div>
+
+                  {/* Service */}
+                  <div className="flex flex-col gap-2">
+                    <label className="font-semibold">Interested In</label>
+
+                    <select
+                      name="Service"
+                      className="border border-zinc-500 bg-zinc-900 p-3 rounded-md outline-none focus:border-violet-500"
+                    >
+                      <option>Web Development</option>
+                      <option>Mobile App Development</option>
+                      <option>Backend API Development</option>
+                      <option>UI/UX Collaboration</option>
+                      <option>Freelance Project</option>
+                      <option>Business Inquiry</option>
+                    </select>
+                  </div>
+
+                  {/* Subject */}
+                  <div className="flex flex-col gap-2">
+                    <label className="font-semibold">Subject</label>
+
+                    <input
+                      type="text"
+                      name="Subject"
+                      placeholder="Project discussion / collaboration..."
+                      className="border border-zinc-500 bg-zinc-900 p-3 rounded-md outline-none focus:border-violet-500"
+                      required
+                    />
+                  </div>
+
+                  {/* Message */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="message" className="font-semibold">
+                      Message
+                    </label>
+
                     <textarea
-                      name="message"
+                      name="Message"
                       id="message"
-                      cols="45"
                       rows="7"
-                      placeholder="Message..."
-                      className="border border-zinc-500 p-2 rounded-md"
+                      placeholder="Write your message here..."
+                      className="border border-zinc-500 bg-zinc-900 p-3 rounded-md outline-none focus:border-violet-500"
                       required
                     ></textarea>
                   </div>
+
+                  {/* Button */}
                   <div className="text-center">
                     <button
                       type="submit"
                       className="font-semibold bg-[#1a1a1a] p-4 px-6 rounded-full w-full cursor-pointer border border-gray-700 hover:bg-[#222] transition-colors"
                     >
-                      <ShinyText text="Send" disabled={false} speed={3} className="custom-class" />
+                      <ShinyText
+                        text="Send Message"
+                        disabled={false}
+                        speed={3}
+                        className="custom-class"
+                      />
                     </button>
                   </div>
+
                 </div>
               </form>
             </div>

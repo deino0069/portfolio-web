@@ -119,17 +119,7 @@ export default function ChatRoom() {
         </form>
       ) : (
         <div className="flex flex-col items-center justify-center gap-4">
-          <button
-            onClick={loginWithGoogle}
-            className="flex items-center gap-3 bg-white text-gray-800 px-5 py-2 rounded-full shadow hover:bg-gray-200 transition"
-          >
-            <img
-              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-              alt="Google logo"
-              className="w-5 h-5"
-            />
-            Login with Google
-          </button>
+          
           {/* <p className="text-sm text-gray-400">Login</p> */}
         </div>
       )}
